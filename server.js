@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs= require('fs');
 var app = express();
+const port = process.env.PORT || 3000;
 
 app.set('view engine', 'hbs');
 hbs.registerPartials(__dirname + '/views/partial');
@@ -26,12 +27,12 @@ app.use((req,res,next)=>{
 });
 
 
-app.use((req,res,next)=>{
-    res.render('maintaince.hbs'); 
+// app.use((req,res,next)=>{
+//     res.render('maintaince.hbs'); 
 
-});
+// });
 app.use(express.static(__dirname + '/public'));
-
+ 
 
 app.get('/',(req,res)=>{
 
@@ -54,6 +55,6 @@ app.get('/bad',(req,res)=>{
    });
 });
 
-app.listen(3000,()=>{
-   console.log("Server is upon 3000");
+app.listen(port,()=>{
+   console.log(`Server is upon ${port}`);
 });
